@@ -1,6 +1,7 @@
 package com.parrit.transformers;
 
 import com.parrit.DTOs.PairingHistoryDTO;
+import com.parrit.DTOs.PersonDTO;
 import com.parrit.entities.PairingHistory;
 
 import java.text.SimpleDateFormat;
@@ -16,10 +17,9 @@ public class PairingHistoryTransformer {
     }
 
     public static PairingHistoryDTO transform(PairingHistory pairingHistory) {
-        PairingHistoryDTO pairingHistoryDTO = new PairingHistoryDTO();
-        pairingHistoryDTO.setPairingTime(simpleDateFormat.format(pairingHistory.getTimestamp()));
-        pairingHistoryDTO.setPeople(PersonTransformer.transform(pairingHistory.getPeople()));
-        pairingHistoryDTO.setPairingBoardName(pairingHistory.getPairingBoardName());
+        String pairingTime = simpleDateFormat.format(pairingHistory.getTimestamp());
+        List<PersonDTO> personDTOs = PersonTransformer.transform(pairingHistory.getPeople());
+        PairingHistoryDTO pairingHistoryDTO = new PairingHistoryDTO(pairingTime, personDTOs, pairingHistory.getPairingBoardName());
         return pairingHistoryDTO;
     }
 

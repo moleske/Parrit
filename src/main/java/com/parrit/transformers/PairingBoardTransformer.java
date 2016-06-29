@@ -1,7 +1,9 @@
 package com.parrit.transformers;
 
 import com.parrit.DTOs.PairingBoardDTO;
+import com.parrit.DTOs.PersonDTO;
 import com.parrit.entities.PairingBoard;
+import com.parrit.entities.Person;
 
 import java.util.Collections;
 import java.util.List;
@@ -10,11 +12,8 @@ import java.util.stream.Collectors;
 public class PairingBoardTransformer {
 
     public static PairingBoardDTO transform(PairingBoard pairingBoard) {
-        PairingBoardDTO pairingBoardDTO = new PairingBoardDTO();
-        pairingBoardDTO.setId(pairingBoard.getId());
-        pairingBoardDTO.setName(pairingBoard.getName());
-        pairingBoardDTO.setPeople(PersonTransformer.transform(pairingBoard.getPeople()));
-        return pairingBoardDTO;
+        List<PersonDTO> personDTOs = PersonTransformer.transform(pairingBoard.getPeople());
+        return new PairingBoardDTO(pairingBoard.getId(), personDTOs, pairingBoard.getName());
     }
 
     public static List<PairingBoardDTO> transform(List<PairingBoard> pairingBoards) {
@@ -25,11 +24,8 @@ public class PairingBoardTransformer {
     }
 
     public static PairingBoard reverse(PairingBoardDTO pairingBoardDTO) {
-        PairingBoard pairingBoard = new PairingBoard();
-        pairingBoard.setId(pairingBoardDTO.getId());
-        pairingBoard.setName(pairingBoardDTO.getName());
-        pairingBoard.setPeople(PersonTransformer.reverse(pairingBoardDTO.getPeople()));
-        return pairingBoard;
+        List<Person> reversePeople = PersonTransformer.reverse(pairingBoardDTO.getPeople());
+        return new PairingBoard(pairingBoardDTO.getName(), reversePeople, pairingBoardDTO.getId());
     }
 
     public static List<PairingBoard> reverse(List<PairingBoardDTO> pairingBoardDTOs) {

@@ -1,26 +1,25 @@
 package com.parrit.transformers;
 
+import com.parrit.DTOs.PairingBoardDTO;
+import com.parrit.DTOs.PersonDTO;
 import com.parrit.DTOs.ProjectDTO;
+import com.parrit.entities.PairingBoard;
+import com.parrit.entities.Person;
 import com.parrit.entities.Project;
+
+import java.util.List;
 
 public class ProjectTransformer {
 
     public static ProjectDTO transform(Project project) {
-        ProjectDTO projectDTO = new ProjectDTO();
-        projectDTO.setId(project.getId());
-        projectDTO.setName(project.getName());
-        projectDTO.setPeople(PersonTransformer.transform(project.getPeople()));
-        projectDTO.setPairingBoards(PairingBoardTransformer.transform(project.getPairingBoards()));
-        return projectDTO;
+        List<PersonDTO> personDTOs = PersonTransformer.transform(project.getPeople());
+        List<PairingBoardDTO> pairingBoardDTOs = PairingBoardTransformer.transform(project.getPairingBoards());
+        return new ProjectDTO(project.getId(), project.getName(), pairingBoardDTOs, personDTOs);
     }
 
     public static Project merge(Project project, ProjectDTO projectDTO) {
-        Project mergedProject = new Project();
-        mergedProject.setId(project.getId());
-        mergedProject.setName(projectDTO.getName());
-        mergedProject.setPassword(project.getPassword());
-        mergedProject.setPeople(PersonTransformer.reverse(projectDTO.getPeople()));
-        mergedProject.setPairingBoards(PairingBoardTransformer.reverse(projectDTO.getPairingBoards()));
-        return mergedProject;
+        List<PairingBoard> pairingBoards = PairingBoardTransformer.reverse(projectDTO.getPairingBoards());
+        List<Person> reversePeople = PersonTransformer.reverse(projectDTO.getPeople());
+        return new Project(projectDTO.getName(), project.getPassword(), pairingBoards, reversePeople, project.getId());
     }
 }

@@ -56,8 +56,7 @@ public class PairingServiceTest extends MockitoTestBase {
         Person p2 = new Person("Mary");
         p2.setId(2L);
 
-        PairingBoard pairingBoard = new PairingBoard("The Pairing Board", Arrays.asList(p1, p2));
-        pairingBoard.setId(1L);
+        PairingBoard pairingBoard = new PairingBoard("The Pairing Board", Arrays.asList(p1, p2), 1L);
         List<PairingBoard> pairingBoards = Collections.singletonList(pairingBoard);
 
         Project project = new Project("One", "onepass", pairingBoards, new ArrayList<>());
@@ -87,10 +86,8 @@ public class PairingServiceTest extends MockitoTestBase {
         Person p4 = new Person("Tammy");
         p4.setId(4L);
 
-        PairingBoard pairingBoard1 = new PairingBoard("The Pairing Board", Arrays.asList(p1, p2));
-        pairingBoard1.setId(1L);
-        PairingBoard pairingBoard2 = new PairingBoard("The Second Pairing Board", Arrays.asList(p3, p4));
-        pairingBoard2.setId(2L);
+        PairingBoard pairingBoard1 = new PairingBoard("The Pairing Board", Arrays.asList(p1, p2), 1L);
+        PairingBoard pairingBoard2 = new PairingBoard("The Second Pairing Board", Arrays.asList(p3, p4), 2L);
 
         List<PairingBoard> pairingBoards = Arrays.asList(pairingBoard1, pairingBoard2);
 
@@ -122,8 +119,7 @@ public class PairingServiceTest extends MockitoTestBase {
         Person p3 = new Person("Steve");
         p3.setId(3L);
 
-        PairingBoard pairingBoard = new PairingBoard("The Pairing Board", Arrays.asList(p1, p2, p3));
-        pairingBoard.setId(1L);
+        PairingBoard pairingBoard = new PairingBoard("The Pairing Board", Arrays.asList(p1, p2, p3), 1L);
 
         List<PairingBoard> pairingBoards = Collections.singletonList(pairingBoard);
 
@@ -148,8 +144,7 @@ public class PairingServiceTest extends MockitoTestBase {
         Person p1 = new Person("John");
         p1.setId(1L);
 
-        PairingBoard pairingBoard = new PairingBoard("The Pairing Board", Collections.singletonList(p1));
-        pairingBoard.setId(1L);
+        PairingBoard pairingBoard = new PairingBoard("The Pairing Board", Collections.singletonList(p1), 1L);
 
         List<PairingBoard> pairingBoards = Collections.singletonList(pairingBoard);
 
@@ -171,8 +166,7 @@ public class PairingServiceTest extends MockitoTestBase {
 
     @Test
     public void savePairing_doesNotCreateAPairingHistory_whenThereIsNoOneInAPairingBoard() {
-        PairingBoard pairingBoard = new PairingBoard("The Pairing Board", Collections.emptyList());
-        pairingBoard.setId(1L);
+        PairingBoard pairingBoard = new PairingBoard("The Pairing Board", Collections.emptyList(), 1L);
 
         List<PairingBoard> pairingBoards = Collections.singletonList(pairingBoard);
 

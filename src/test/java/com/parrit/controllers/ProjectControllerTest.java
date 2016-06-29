@@ -48,15 +48,13 @@ public class ProjectControllerTest extends ControllerTestBase {
 
     @Before
     public void setUp() {
-        persistedProject = new Project("Henry", "henrypass", new ArrayList<>(), new ArrayList<>());
-        persistedProject.setId(1L);
+        persistedProject = new Project("Henry", "henrypass", new ArrayList<>(), new ArrayList<>(), 1L);
         persistedProjectString = "{\"id\":1,\"name\":\"Henry\",\"password\":\"henrypass\",\"pairingBoards\":[],\"people\":[]}";
 
         updatedProjectDTO = ProjectTransformer.transform(persistedProject);
         updatedProjectDTOString = "{\"id\":1,\"name\":\"Bob\",\"pairingBoards\":[],\"people\":[]}";
 
-        updatedProject = new Project("Henry", "henrypass", new ArrayList<>(), new ArrayList<>());
-        updatedProject.setId(1L);
+        updatedProject = new Project("Henry", "henrypass", new ArrayList<>(), new ArrayList<>(), 1L);
     }
 
     //*********************//

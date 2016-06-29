@@ -1,9 +1,7 @@
 package com.parrit.DTOs
 
-class PairingHistoryDTO {
-
-    var pairingTime: String? = null
-    var people: List<PersonDTO>? = null
-    var pairingBoardName: String? = null
-
-}
+class PairingHistoryDTO(
+        var pairingTime: String = "",
+        var people: List<PersonDTO> = emptyList(),
+        var pairingBoardName: String = ""
+)

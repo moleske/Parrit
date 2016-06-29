@@ -10,10 +10,7 @@ import java.util.stream.Collectors;
 public class PersonTransformer {
 
     public static PersonDTO transform(Person person) {
-        PersonDTO personDTO = new PersonDTO();
-        personDTO.setId(person.getId());
-        personDTO.setName(person.getName());
-        return personDTO;
+        return new PersonDTO(person.getId(), person.getName());
     }
 
     public static List<PersonDTO> transform(List<Person> persons) {
@@ -24,9 +21,8 @@ public class PersonTransformer {
     }
 
     public static Person reverse(PersonDTO personDTO) {
-        Person person = new Person();
+        Person person = new Person(personDTO.getName());
         person.setId(personDTO.getId());
-        person.setName(personDTO.getName());
         return person;
     }
 

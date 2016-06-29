@@ -17,7 +17,7 @@ class Person {
 
     @NotNull
     @Length(min = 1, max = 10)
-    var name: String? = null
+    var name: String = ""
 
     constructor() {
     }
@@ -26,22 +26,23 @@ class Person {
         this.name = name
     }
 
-    override fun equals(o: Any?): Boolean {
-        if (this === o) return true
-        if (o !is Person) return false
+    override fun equals(other: Any?): Boolean{
+        if (this === other) return true
+        if (other?.javaClass != javaClass) return false
 
-        if (id != o.id) return false
-        return if (name != null) name == o.name else o.name == null
+        other as Person
 
+        if (id != other.id) return false
+        if (name != other.name) return false
+
+        return true
     }
 
-    override fun hashCode(): Int {
-        var result = (id xor id.ushr(32)).toInt()
-        result = 31 * result + if (name != null) name!!.hashCode() else 0
+    override fun hashCode(): Int{
+        var result = id.hashCode()
+        result = 31 * result + name.hashCode()
         return result
     }
 
-    override fun toString(): String {
-        return "Person{id=$id, name='$name'}"
-    }
+    override fun toString(): String = "Person{id=$id, name='$name'}"
 }

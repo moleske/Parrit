@@ -90,9 +90,7 @@ public class ProjectController {
     public ResponseEntity<ProjectDTO> addPerson(@PathVariable long projectId, @RequestBody PersonDTO personDTO) {
         Project savedProject = projectRepository.findOne(projectId);
 
-        Person newPerson = new Person();
-        newPerson.setName(personDTO.getName());
-        savedProject.getPeople().add(newPerson);
+        savedProject.getPeople().add(new Person(personDTO.getName()));
 
         Project updatedProject = projectRepository.save(savedProject);
         return new ResponseEntity<>(ProjectTransformer.transform(updatedProject), HttpStatus.OK);

@@ -51,12 +51,9 @@ public class RecommendationServiceTest extends MockitoTestBase {
 
         project = new Project("One", "onepass", new ArrayList<>(), new ArrayList<>());
 
-        pairingBoard1 = new PairingBoard("One", new ArrayList<>());
-        pairingBoard1.setId(1L);
-        pairingBoard2 = new PairingBoard("Two", new ArrayList<>());
-        pairingBoard2.setId(2L);
-        pairingBoard3 = new PairingBoard("Three", new ArrayList<>());
-        pairingBoard3.setId(3L);
+        pairingBoard1 = new PairingBoard("One", new ArrayList<>(), 1L);
+        pairingBoard2 = new PairingBoard("Two", new ArrayList<>(), 2L);
+        pairingBoard3 = new PairingBoard("Three", new ArrayList<>(), 3L);
 
         p1 = new Person("Alpha");
         p1.setId(1L);
@@ -90,8 +87,7 @@ public class RecommendationServiceTest extends MockitoTestBase {
 
         Project returnedProject = recommendationService.get(project, pairingHistories);
 
-        PairingBoard expectedPairingBoard = new PairingBoard("One", Collections.singletonList(p1));
-        expectedPairingBoard.setId(1L);
+        PairingBoard expectedPairingBoard = new PairingBoard("One", Collections.singletonList(p1), 1L);
 
         Project expectedProject = new Project("One", "onepass", Collections.singletonList(expectedPairingBoard), new ArrayList<>());
 
@@ -117,16 +113,13 @@ public class RecommendationServiceTest extends MockitoTestBase {
 
         Project expectedProject = new Project("One", "onepass", new ArrayList<>(), new ArrayList<>());
 
-        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p2, p3));
-        pairingBoard1Expected.setId(1L);
+        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p2, p3), 1L);
         expectedProject.getPairingBoards().add(pairingBoard1Expected);
 
-        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Arrays.asList(p4, p5, p6));
-        pairingBoard2Expected.setId(2L);
+        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Arrays.asList(p4, p5, p6), 2L);
         expectedProject.getPairingBoards().add(pairingBoard2Expected);
 
-        PairingBoard pairingBoard3Expected = new PairingBoard("Three", Collections.singletonList(p1));
-        pairingBoard3Expected.setId(3L);
+        PairingBoard pairingBoard3Expected = new PairingBoard("Three", Collections.singletonList(p1), 3L);
         expectedProject.getPairingBoards().add(pairingBoard3Expected);
 
         assertThat(returnedProject, equalTo(expectedProject));
@@ -152,12 +145,10 @@ public class RecommendationServiceTest extends MockitoTestBase {
 
         Project expectedProject = new Project("One", "onepass", new ArrayList<>(), new ArrayList<>());
 
-        PairingBoard pairingBoard1Expected = new PairingBoard("One", Collections.singletonList(p2));
-        pairingBoard1Expected.setId(1L);
+        PairingBoard pairingBoard1Expected = new PairingBoard("One", Collections.singletonList(p2), 1L);
         expectedProject.getPairingBoards().add(pairingBoard1Expected);
 
-        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Arrays.asList(p3, p1));
-        pairingBoard2Expected.setId(2L);
+        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Arrays.asList(p3, p1), 2L);
         expectedProject.getPairingBoards().add(pairingBoard2Expected);
 
         assertThat(returnedProject, equalTo(expectedProject));
@@ -189,12 +180,10 @@ public class RecommendationServiceTest extends MockitoTestBase {
         Project returnedProject = recommendationService.get(project, pairingHistories);
         Project expectedProject = new Project("One", "onepass", new ArrayList<>(), new ArrayList<>());
 
-        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p3, p2));
-        pairingBoard1Expected.setId(1L);
+        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p3, p2), 1L);
         expectedProject.getPairingBoards().add(pairingBoard1Expected);
 
-        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Arrays.asList(p4, p1));
-        pairingBoard2Expected.setId(2L);
+        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Arrays.asList(p4, p1), 2L);
         expectedProject.getPairingBoards().add(pairingBoard2Expected);
 
         assertThat(returnedProject, equalTo(expectedProject));
@@ -226,12 +215,10 @@ public class RecommendationServiceTest extends MockitoTestBase {
         Project returnedProject = recommendationService.get(project, pairingHistories);
         Project expectedProject = new Project("One", "onepass", new ArrayList<>(), new ArrayList<>());
 
-        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p3, p1));
-        pairingBoard1Expected.setId(1L);
+        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p3, p1), 1L);
         expectedProject.getPairingBoards().add(pairingBoard1Expected);
 
-        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Arrays.asList(p4, p2));
-        pairingBoard2Expected.setId(2L);
+        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Arrays.asList(p4, p2), 2L);
         expectedProject.getPairingBoards().add(pairingBoard2Expected);
 
         assertThat(returnedProject, equalTo(expectedProject));
@@ -257,12 +244,10 @@ public class RecommendationServiceTest extends MockitoTestBase {
 
         Project expectedProject = new Project("One", "onepass", new ArrayList<>(), new ArrayList<>());
 
-        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p3, p2));
-        pairingBoard1Expected.setId(1L);
+        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p3, p2), 1L);
         expectedProject.getPairingBoards().add(pairingBoard1Expected);
 
-        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Collections.singletonList(p1));
-        pairingBoard2Expected.setId(2L);
+        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Collections.singletonList(p1), 2L);
         expectedProject.getPairingBoards().add(pairingBoard2Expected);
 
         assertThat(returnedProject, equalTo(expectedProject));
@@ -292,12 +277,10 @@ public class RecommendationServiceTest extends MockitoTestBase {
 
         Project expectedProject = new Project("One", "onepass", new ArrayList<>(), new ArrayList<>());
 
-        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p4, p1));
-        pairingBoard1Expected.setId(1L);
+        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p4, p1), 1L);
         expectedProject.getPairingBoards().add(pairingBoard1Expected);
 
-        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Arrays.asList(p2, p3));
-        pairingBoard2Expected.setId(2L);
+        PairingBoard pairingBoard2Expected = new PairingBoard("Two", Arrays.asList(p2, p3), 2L);
         expectedProject.getPairingBoards().add(pairingBoard2Expected);
 
         assertThat(returnedProject, equalTo(expectedProject));
@@ -317,8 +300,7 @@ public class RecommendationServiceTest extends MockitoTestBase {
 
         Project expectedProject = new Project("One", "onepass", new ArrayList<>(), new ArrayList<>());
 
-        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p1, p5));
-        pairingBoard1Expected.setId(1L);
+        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p1, p5), 1L);
         expectedProject.getPairingBoards().add(pairingBoard1Expected);
 
         PairingBoard pairingBoard2Expected = new PairingBoard("New Pairing Board", Arrays.asList(p2, p4)); //Null Id
@@ -349,8 +331,7 @@ public class RecommendationServiceTest extends MockitoTestBase {
 
         Project expectedProject = new Project("One", "onepass", new ArrayList<>(), new ArrayList<>());
 
-        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p4, p1));
-        pairingBoard1Expected.setId(1L);
+        PairingBoard pairingBoard1Expected = new PairingBoard("One", Arrays.asList(p4, p1), 1L);
         expectedProject.getPairingBoards().add(pairingBoard1Expected);
 
         PairingBoard pairingBoard2Expected = new PairingBoard("New Pairing Board", Arrays.asList(p2, p3)); //Null Id
