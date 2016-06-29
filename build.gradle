@@ -8,7 +8,7 @@ description "parrit"
 
 buildscript {
     ext {
-        springBootVersion = "1.3.3.RELEASE"
+        springBootVersion = "1.3.5.RELEASE"
         kotlin_version = '1.0.2-1'
     }
 
