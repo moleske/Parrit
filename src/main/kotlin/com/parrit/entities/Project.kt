@@ -18,11 +18,11 @@ data class Project @JvmOverloads constructor(
 
         @OneToMany(targetEntity = PairingBoard::class, cascade = arrayOf(CascadeType.ALL), orphanRemoval = true)
         @JoinColumn(name = "project_id")
-        var pairingBoards: List<PairingBoard> = emptyList(),
+        var pairingBoards: MutableList<PairingBoard> = mutableListOf(),
 
         @OneToMany(targetEntity = Person::class, cascade = arrayOf(CascadeType.ALL))
         @JoinColumn(name = "project_id")
-        var people: List<Person> = emptyList(),
+        var people: MutableList<Person> = mutableListOf(),
 
         @Id
         @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)

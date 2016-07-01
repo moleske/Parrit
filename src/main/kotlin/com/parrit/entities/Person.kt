@@ -19,11 +19,9 @@ class Person {
     @Length(min = 1, max = 10)
     var name: String = ""
 
-    constructor() {
-    }
-
-    constructor(name: String) {
+    @JvmOverloads constructor(name: String, id: Long = 0) {
         this.name = name
+        this.id = id
     }
 
     override fun equals(other: Any?): Boolean{

@@ -8,7 +8,7 @@ data class PairingBoard @JvmOverloads constructor(
 
         @OneToMany(targetEntity = Person::class)
         @JoinColumn(name = "pairing_board_id")
-        var people: List<Person> = emptyList(),
+        var people: MutableList<Person> = mutableListOf(),
 
         @Id
         @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
