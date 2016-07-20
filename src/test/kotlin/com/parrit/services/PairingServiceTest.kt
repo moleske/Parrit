@@ -7,15 +7,13 @@ import com.parrit.entities.Project
 import com.parrit.repositories.PairingHistoryRepository
 import com.parrit.repositories.ProjectRepository
 import com.parrit.utilities.CurrentTimeProvider
-import io.damo.kspec.Spec
+import io.damo.aspen.Test
 import org.mockito.Mockito
 import org.mockito.Mockito.*
 import java.sql.Timestamp
-import java.util.*
 import kotlin.test.assertEquals
 
-class PairingServiceTest : Spec() {
-
+class PairingServiceTest : Test() {
 
     lateinit var mockPairingHistoryRepository: PairingHistoryRepository
     lateinit var mockProjectRepository: ProjectRepository

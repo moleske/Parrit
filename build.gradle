@@ -49,7 +49,7 @@ dependencies {
     compile "org.apache.commons:commons-lang3:3.4"
     compile "org.flywaydb:flyway-core:3.2.1"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    testCompile "io.damo.kspec:kspec-spring:1.2.1"
+    testCompile "io.damo.aspen:aspen-spring:2.0.0"
     testCompile "org.jetbrains.kotlin:kotlin-test:${kotlin_version}"
 }
 

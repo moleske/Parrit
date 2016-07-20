@@ -5,14 +5,14 @@ import com.parrit.entities.PairingHistory
 import com.parrit.entities.Person
 import com.parrit.entities.Project
 import com.parrit.utilities.CurrentTimeProvider
-import io.damo.kspec.Spec
+import io.damo.aspen.Test
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 import java.sql.Timestamp
 import kotlin.test.assertEquals
 
 
-class RecommendationServiceTest : Spec() {
+class RecommendationServiceTest : Test() {
 
     lateinit var currentTimeProvider: CurrentTimeProvider
     lateinit var recommendationService: RecommendationService
