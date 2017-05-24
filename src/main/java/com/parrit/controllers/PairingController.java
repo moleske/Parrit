@@ -38,7 +38,7 @@ public class PairingController {
     @ResponseBody
     public ResponseEntity<List<PairingHistoryDTO>> savePairing(@PathVariable long projectId) {
         List<PairingHistory> pairingHistoryList = pairingService.savePairing(projectId);
-        return new ResponseEntity<>(PairingHistoryTransformer.transform(pairingHistoryList), HttpStatus.OK);
+        return new ResponseEntity<>(PairingHistoryTransformer.INSTANCE.transform(pairingHistoryList), HttpStatus.OK);
     }
 
     @PreAuthorize("@authorizationService.canAccessProject(principal, #projectId)")
@@ -46,7 +46,7 @@ public class PairingController {
     @ResponseBody
     public ResponseEntity<ProjectDTO> getRecommendation(@PathVariable long projectId) {
         Project project = pairingService.getRecommendation(projectId);
-        return new ResponseEntity<>(ProjectTransformer.transform(project), HttpStatus.OK);
+        return new ResponseEntity<>(ProjectTransformer.INSTANCE.transform(project), HttpStatus.OK);
     }
 
     @PreAuthorize("@authorizationService.canAccessProject(principal, #projectId)")
@@ -54,6 +54,6 @@ public class PairingController {
     @ResponseBody
     public ResponseEntity<List<PairingHistoryDTO>> getPairingHistory(@PathVariable long projectId) {
         List<PairingHistory> pairingHistoryList = pairingService.getSortedPairingHistory(projectId);
-        return new ResponseEntity<>(PairingHistoryTransformer.transform(pairingHistoryList), HttpStatus.OK);
+        return new ResponseEntity<>(PairingHistoryTransformer.INSTANCE.transform(pairingHistoryList), HttpStatus.OK);
     }
 }

@@ -43,7 +43,7 @@ public class ProjectController {
     @RequestMapping(path = "/{projectName:.+}", method = RequestMethod.GET)
     public String getProject(@PathVariable String projectName, Model model) {
         Project project = projectRepository.findByName(projectName);
-        model.addAttribute("project", ProjectTransformer.transform(project));
+        model.addAttribute("project", ProjectTransformer.INSTANCE.transform(project));
         return "project";
     }
 
@@ -82,9 +82,9 @@ public class ProjectController {
     @ResponseBody
     public ResponseEntity<ProjectDTO> saveProject(@RequestBody ProjectDTO projectDTO) {
         Project savedProject = projectRepository.findOne(projectDTO.getId());
-        Project updatedProject = ProjectTransformer.merge(savedProject, projectDTO);
+        Project updatedProject = ProjectTransformer.INSTANCE.merge(savedProject, projectDTO);
         updatedProject = projectRepository.save(updatedProject);
-        return new ResponseEntity<>(ProjectTransformer.transform(updatedProject), HttpStatus.OK);
+        return new ResponseEntity<>(ProjectTransformer.INSTANCE.transform(updatedProject), HttpStatus.OK);
     }
 
     @PreAuthorize("@authorizationService.canAccessProject(principal, #projectId)")
@@ -98,6 +98,6 @@ public class ProjectController {
         savedProject.getPeople().add(newPerson);
 
         Project updatedProject = projectRepository.save(savedProject);
-        return new ResponseEntity<>(ProjectTransformer.transform(updatedProject), HttpStatus.OK);
+        return new ResponseEntity<>(ProjectTransformer.INSTANCE.transform(updatedProject), HttpStatus.OK);
     }
 }

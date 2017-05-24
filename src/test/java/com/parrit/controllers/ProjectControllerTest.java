@@ -52,7 +52,7 @@ public class ProjectControllerTest extends ControllerTestBase {
         persistedProject.setId(1L);
         persistedProjectString = "{\"id\":1,\"name\":\"Henry\",\"password\":\"henrypass\",\"pairingBoards\":[],\"people\":[]}";
 
-        updatedProjectDTO = ProjectTransformer.transform(persistedProject);
+        updatedProjectDTO = ProjectTransformer.INSTANCE.transform(persistedProject);
         updatedProjectDTOString = "{\"id\":1,\"name\":\"Bob\",\"pairingBoards\":[],\"people\":[]}";
 
         updatedProject = new Project("Henry", "henrypass", new ArrayList<>(), new ArrayList<>());

@@ -45,7 +45,7 @@ public class PairingControllerTest extends ControllerTestBase {
         exampleProject = new Project("Nancy", "nancypass", Collections.singletonList(pairingBoard), new ArrayList<>());
         exampleProject.setId(2L);
 
-        String pairingBoardString = "{\"id\":1,\"people\":[],\"name\":\"Super Pairing Board\",\"exempt\":false}";
+        String pairingBoardString = "{\"id\":1,\"people\":[],\"exempt\":false,\"name\":\"Super Pairing Board\"}";
         exampleProjectString = "{\"id\":2,\"name\":\"Nancy\",\"pairingBoards\":[" + pairingBoardString + "],\"people\":[]}";
     }
 
@@ -70,7 +70,7 @@ public class PairingControllerTest extends ControllerTestBase {
                 "{\"pairingTime\":\"1970-01-01T00:02:00.000+0000\",\"people\":[],\"pairingBoardName\":\"Pairing Board 1\"}," +
                 "{\"pairingTime\":\"1970-01-01T00:01:00.000+0000\",\"people\":[],\"pairingBoardName\":\"Pairing Board 2\"}," +
                 "{\"pairingTime\":\"1970-01-01T00:01:00.000+0000\",\"people\":[],\"pairingBoardName\":\"Pairing Board 3\"}" +
-            "]";
+                "]";
 
         String returnedProject = mvcResult.getResponse().getContentAsString();
         assertThat(returnedProject, equalTo(expectedResult));
@@ -102,15 +102,15 @@ public class PairingControllerTest extends ControllerTestBase {
         when(mockPairingService.getSortedPairingHistory(anyLong())).thenReturn(Arrays.asList(pairingHistory1, pairingHistory2, pairingHistory3));
 
         MvcResult mvcResult = mvc.perform(get("/api/project/42/pairing/history")
-            .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andReturn();
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
 
         String expectedResult = "[" +
                 "{\"pairingTime\":\"1970-01-01T00:02:00.000+0000\",\"people\":[],\"pairingBoardName\":\"Pairing Board 1\"}," +
                 "{\"pairingTime\":\"1970-01-01T00:01:00.000+0000\",\"people\":[],\"pairingBoardName\":\"Pairing Board 2\"}," +
                 "{\"pairingTime\":\"1970-01-01T00:01:00.000+0000\",\"people\":[],\"pairingBoardName\":\"Pairing Board 3\"}" +
-            "]";
+                "]";
 
         String returnedProject = mvcResult.getResponse().getContentAsString();
         assertThat(returnedProject, equalTo(expectedResult));
