@@ -24,8 +24,10 @@ object PairingHistoryTransformer {
     }
 
     fun transform(pairingHistories: List<PairingHistory>?): List<PairingHistoryDTO> {
-        if (pairingHistories == null || pairingHistories.isEmpty()) return emptyList()
-        return pairingHistories.map { transform(it) }
+        when {
+            pairingHistories == null || pairingHistories.isEmpty() -> return emptyList()
+            else -> return pairingHistories.map { transform(it) }
+        }
     }
 
 }

@@ -3,9 +3,6 @@ package com.parrit.transformers
 import com.parrit.DTOs.PairingBoardDTO
 import com.parrit.entities.PairingBoard
 
-import java.util.Collections
-import java.util.stream.Collectors
-
 object PairingBoardTransformer {
 
     fun transform(pairingBoard: PairingBoard): PairingBoardDTO {
@@ -32,7 +29,9 @@ object PairingBoardTransformer {
     }
 
     fun reverse(pairingBoardDTOs: List<PairingBoardDTO>?): List<PairingBoard> {
-        if (pairingBoardDTOs == null || pairingBoardDTOs.isEmpty()) return emptyList()
-        return pairingBoardDTOs.map { reverse(it) }
+        when {
+            pairingBoardDTOs == null || pairingBoardDTOs.isEmpty() -> return emptyList()
+            else -> return pairingBoardDTOs.map { reverse(it) }
+        }
     }
 }

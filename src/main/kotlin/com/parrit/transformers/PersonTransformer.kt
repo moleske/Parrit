@@ -13,8 +13,10 @@ object PersonTransformer {
     }
 
     fun transform(persons: List<Person>?): List<PersonDTO> {
-        if (persons == null || persons.isEmpty()) return emptyList()
-        return persons.map { transform(it) }
+        when {
+            persons == null || persons.isEmpty() -> return emptyList()
+            else -> return persons.map { transform(it) }
+        }
     }
 
     fun reverse(personDTO: PersonDTO): Person {
@@ -25,8 +27,10 @@ object PersonTransformer {
     }
 
     fun reverse(personDTOs: List<PersonDTO>?): List<Person> {
-        if (personDTOs == null || personDTOs.isEmpty()) return emptyList()
-        return personDTOs.map { reverse(it) }
+        when {
+            personDTOs == null || personDTOs.isEmpty() -> return emptyList()
+            else -> return personDTOs.map { reverse(it) }
+        }
     }
 
 }
