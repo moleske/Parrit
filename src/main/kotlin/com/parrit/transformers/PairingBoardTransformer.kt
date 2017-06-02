@@ -28,10 +28,10 @@ object PairingBoardTransformer {
         return pairingBoard
     }
 
-    fun reverse(pairingBoardDTOs: List<PairingBoardDTO>?): List<PairingBoard> {
+    fun reverse(pairingBoardDTOs: List<PairingBoardDTO>?): MutableList<PairingBoard> {
         when {
-            pairingBoardDTOs == null || pairingBoardDTOs.isEmpty() -> return emptyList()
-            else -> return pairingBoardDTOs.map { reverse(it) }
+            pairingBoardDTOs == null || pairingBoardDTOs.isEmpty() -> return mutableListOf()
+            else -> return pairingBoardDTOs.map { reverse(it) }.toMutableList()
         }
     }
 }

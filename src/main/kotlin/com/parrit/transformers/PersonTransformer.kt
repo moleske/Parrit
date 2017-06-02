@@ -19,12 +19,7 @@ object PersonTransformer {
         }
     }
 
-    fun reverse(personDTO: PersonDTO): Person {
-        val person = Person()
-        person.id = personDTO.id
-        person.name = personDTO.name
-        return person
-    }
+    fun reverse(personDTO: PersonDTO) = Person(id = personDTO.id, name = personDTO.name)
 
     fun reverse(personDTOs: List<PersonDTO>?): List<Person> {
         when {
