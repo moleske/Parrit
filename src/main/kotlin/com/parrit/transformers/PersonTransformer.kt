@@ -21,10 +21,10 @@ object PersonTransformer {
 
     fun reverse(personDTO: PersonDTO) = Person(id = personDTO.id, name = personDTO.name)
 
-    fun reverse(personDTOs: List<PersonDTO>?): List<Person> {
+    fun reverse(personDTOs: List<PersonDTO>?): MutableList<Person> {
         when {
-            personDTOs == null || personDTOs.isEmpty() -> return emptyList()
-            else -> return personDTOs.map { reverse(it) }
+            personDTOs == null || personDTOs.isEmpty() -> return mutableListOf()
+            else -> return personDTOs.map { reverse(it) }.toMutableList()
         }
     }
 

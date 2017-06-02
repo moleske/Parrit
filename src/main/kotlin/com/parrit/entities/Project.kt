@@ -18,7 +18,7 @@ data class Project
 
         @OneToMany(targetEntity = Person::class, cascade = arrayOf(CascadeType.ALL))
         @JoinColumn(name = "project_id")
-        var people: List<Person> = emptyList(),
+        var people: MutableList<Person> = mutableListOf(),
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

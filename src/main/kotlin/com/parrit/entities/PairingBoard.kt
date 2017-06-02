@@ -9,7 +9,7 @@ class PairingBoard {
 
     @OneToMany(targetEntity = Person::class)
     @JoinColumn(name = "pairing_board_id")
-    var people: List<Person> = emptyList()
+    var people: MutableList<Person> = mutableListOf()
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ class PairingBoard {
 
     constructor()
 
-    constructor(name: String, people: List<Person>) {
+    constructor(name: String, people: MutableList<Person>) {
         this.name = name
         this.people = people
     }
