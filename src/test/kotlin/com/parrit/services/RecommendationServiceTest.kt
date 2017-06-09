@@ -44,7 +44,7 @@ class RecommendationServiceTest : MockitoTestBase() {
     fun setup() {
         recommendationService = RecommendationService(currentTimeProvider)
 
-        project = Project("One", "onepass", mutableListOf(), mutableListOf())
+        project = Project("One", "onepass")
 
         pairingBoard1 = PairingBoard("One", mutableListOf())
         pairingBoard1.id = 1L
@@ -85,7 +85,7 @@ class RecommendationServiceTest : MockitoTestBase() {
         val expectedPairingBoard = PairingBoard("One", mutableListOf(p1))
         expectedPairingBoard.id = 1L
 
-        val expectedProject = Project("One", "onepass", mutableListOf(expectedPairingBoard), mutableListOf())
+        val expectedProject = Project("One", "onepass", mutableListOf(expectedPairingBoard))
 
         assertThat(returnedProject, equalTo(expectedProject))
     }
@@ -107,7 +107,7 @@ class RecommendationServiceTest : MockitoTestBase() {
 
         val returnedProject = recommendationService.get(project, pairingHistories)
 
-        val expectedProject = Project("One", "onepass", mutableListOf(), mutableListOf())
+        val expectedProject = Project("One", "onepass")
 
         val pairingBoard1Expected = PairingBoard("One", mutableListOf(p2, p3))
         pairingBoard1Expected.id = 1L
@@ -142,7 +142,7 @@ class RecommendationServiceTest : MockitoTestBase() {
 
         val returnedProject = recommendationService.get(project, pairingHistories)
 
-        val expectedProject = Project("One", "onepass", mutableListOf(), mutableListOf())
+        val expectedProject = Project("One", "onepass")
 
         val pairingBoard1Expected = PairingBoard("One", mutableListOf(p2))
         pairingBoard1Expected.id = 1L
@@ -179,7 +179,7 @@ class RecommendationServiceTest : MockitoTestBase() {
         pairingHistories.add(p2p4)
 
         val returnedProject = recommendationService.get(project, pairingHistories)
-        val expectedProject = Project("One", "onepass", mutableListOf(), mutableListOf())
+        val expectedProject = Project("One", "onepass")
 
         val pairingBoard1Expected = PairingBoard("One", mutableListOf(p3, p2))
         pairingBoard1Expected.id = 1L
@@ -216,7 +216,7 @@ class RecommendationServiceTest : MockitoTestBase() {
         pairingHistories.add(p2p4)
 
         val returnedProject = recommendationService.get(project, pairingHistories)
-        val expectedProject = Project("One", "onepass", mutableListOf(), mutableListOf())
+        val expectedProject = Project("One", "onepass")
 
         val pairingBoard1Expected = PairingBoard("One", mutableListOf(p3, p1))
         pairingBoard1Expected.id = 1L
@@ -247,7 +247,7 @@ class RecommendationServiceTest : MockitoTestBase() {
 
         val returnedProject = recommendationService.get(project, pairingHistories)
 
-        val expectedProject = Project("One", "onepass", mutableListOf(), mutableListOf())
+        val expectedProject = Project("One", "onepass")
 
         val pairingBoard1Expected = PairingBoard("One", mutableListOf(p3, p2))
         pairingBoard1Expected.id = 1L
@@ -282,7 +282,7 @@ class RecommendationServiceTest : MockitoTestBase() {
 
         val returnedProject = recommendationService.get(project, pairingHistories)
 
-        val expectedProject = Project("One", "onepass", mutableListOf(), mutableListOf())
+        val expectedProject = Project("One", "onepass")
 
         val pairingBoard1Expected = PairingBoard("One", mutableListOf(p4, p1))
         pairingBoard1Expected.id = 1L
@@ -307,7 +307,7 @@ class RecommendationServiceTest : MockitoTestBase() {
 
         val returnedProject = recommendationService.get(project, pairingHistories)
 
-        val expectedProject = Project("One", "onepass", mutableListOf(), mutableListOf())
+        val expectedProject = Project("One", "onepass")
 
         val pairingBoard1Expected = PairingBoard("One", mutableListOf(p1, p5))
         pairingBoard1Expected.id = 1L
@@ -339,7 +339,7 @@ class RecommendationServiceTest : MockitoTestBase() {
 
         val returnedProject = recommendationService.get(project, pairingHistories)
 
-        val expectedProject = Project("One", "onepass", mutableListOf(), mutableListOf())
+        val expectedProject = Project("One", "onepass")
 
         val pairingBoard1Expected = PairingBoard("One", mutableListOf(p4, p1))
         pairingBoard1Expected.id = 1L
@@ -362,7 +362,7 @@ class RecommendationServiceTest : MockitoTestBase() {
 
         val returnedProject = recommendationService.get(project, pairingHistories)
 
-        val expectedProject = Project("One", "onepass", mutableListOf(), mutableListOf())
+        val expectedProject = Project("One", "onepass")
 
         val exemptBoardExpected = PairingBoard("Exempt", mutableListOf(p2))
         exemptBoardExpected.id = 4L
@@ -383,7 +383,7 @@ class RecommendationServiceTest : MockitoTestBase() {
 
         val returnedProject = recommendationService.get(project, pairingHistories)
 
-        val expectedProject = Project("One", "onepass", mutableListOf(), mutableListOf())
+        val expectedProject = Project("One", "onepass")
 
         val pairingBoardExpectedNew = PairingBoard("New Pairing Board", mutableListOf(p1, p2))
         pairingBoardExpectedNew.id = 0L
